@@ -13,17 +13,15 @@ namespace Encapsulamento1_csharp
         public string Titular { get; set; }
         public double Saldo { get; private set; }
 
-        public ContaBancaria(){}
-
         public ContaBancaria(string conta, string titular)
         {
             Conta = conta;
             Titular = titular;
         }
 
-        public ContaBancaria(string conta, string titular, double saldo) : this(conta,titular)
+        public ContaBancaria(string conta, string titular, double depositoInicial) : this (conta,titular)
         {
-            Saldo = saldo;
+            Deposito(depositoInicial);
         }
 
         public void Deposito(double quantia)
@@ -43,7 +41,7 @@ namespace Encapsulamento1_csharp
                 + Conta
                 + ", Titular: "
                 + Titular
-                + ", Saldo: "
+                + ", Saldo: $"
                 + Saldo.ToString("F2",CultureInfo.InvariantCulture);
         }
     }

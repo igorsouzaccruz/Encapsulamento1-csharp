@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Encapsulamento1_csharp;
 
 namespace MyApp // Note: actual namespace depends on the project name.
@@ -18,34 +19,29 @@ namespace MyApp // Note: actual namespace depends on the project name.
             if(isDeposito == 's')
             {
                 Console.Write("Entre com o valor do depósito: ");
-                double saldo = double.Parse(Console.ReadLine());
-                contaBancaria= new ContaBancaria(conta,titular,saldo);
+                double deposito = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                contaBancaria= new ContaBancaria(conta,titular,deposito);
             }
             else
             {
                 contaBancaria = new ContaBancaria(conta, titular);
-                Console.WriteLine();
-                Console.WriteLine("Dados da conta: ");
-                Console.WriteLine(conta);
             }
-
-            Console.WriteLine();
             Console.WriteLine("Dados da conta: ");
-            Console.WriteLine(conta);
+            Console.WriteLine(contaBancaria);
             Console.WriteLine();
 
             Console.Write("Entre com valor de depósito: ");
             contaBancaria.Deposito(double.Parse(Console.ReadLine()));
 
             Console.WriteLine("Dados da conta atualizados:");
-            Console.WriteLine(conta);
+            Console.WriteLine(contaBancaria);
             Console.WriteLine();
 
             Console.Write("Entre com valor para saque: ");
             contaBancaria.Saque(double.Parse(Console.ReadLine()));
 
             Console.WriteLine("Dados da conta atualizados:");
-            Console.WriteLine(conta);
+            Console.WriteLine(contaBancaria);
         }
     }
 }
