@@ -7,37 +7,42 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            ContaBancaria conta = new ContaBancaria();
+            ContaBancaria contaBancaria;
 
             Console.Write("Entre o número da conta: ");
-            conta.Conta = Console.ReadLine();
+            string conta = Console.ReadLine();
             Console.Write("Entre o titular da conta: ");
-            conta.Titular = Console.ReadLine();
+            string titular = Console.ReadLine();
             Console.Write("Haverá depósito inicial (s/n): ");
             char isDeposito = char.Parse(Console.ReadLine());   
             if(isDeposito == 's')
             {
                 Console.Write("Entre com o valor do depósito: ");
-                conta.Saldo = double.Parse(Console.ReadLine());
+                double saldo = double.Parse(Console.ReadLine());
+                contaBancaria= new ContaBancaria(conta,titular,saldo);
             }
             else
             {
+                contaBancaria = new ContaBancaria(conta, titular);
+                Console.WriteLine();
+                Console.WriteLine("Dados da conta: ");
                 Console.WriteLine(conta);
             }
+
             Console.WriteLine();
             Console.WriteLine("Dados da conta: ");
             Console.WriteLine(conta);
             Console.WriteLine();
 
             Console.Write("Entre com valor de depósito: ");
-            conta.Deposito(double.Parse(Console.ReadLine()));
+            contaBancaria.Deposito(double.Parse(Console.ReadLine()));
 
             Console.WriteLine("Dados da conta atualizados:");
             Console.WriteLine(conta);
             Console.WriteLine();
 
             Console.Write("Entre com valor para saque: ");
-            conta.Saque(double.Parse(Console.ReadLine()));
+            contaBancaria.Saque(double.Parse(Console.ReadLine()));
 
             Console.WriteLine("Dados da conta atualizados:");
             Console.WriteLine(conta);

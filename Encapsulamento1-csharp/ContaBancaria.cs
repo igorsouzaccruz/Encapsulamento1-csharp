@@ -9,16 +9,20 @@ namespace Encapsulamento1_csharp
 {
     internal class ContaBancaria
     {
-        public string Conta { get; set; }
+        public string Conta { get; private set; }
         public string Titular { get; set; }
-        public double Saldo { get; set; }
+        public double Saldo { get; private set; }
 
         public ContaBancaria(){}
 
-        public ContaBancaria(string conta, string titular, double saldo)
+        public ContaBancaria(string conta, string titular)
         {
             Conta = conta;
             Titular = titular;
+        }
+
+        public ContaBancaria(string conta, string titular, double saldo) : this(conta,titular)
+        {
             Saldo = saldo;
         }
 
